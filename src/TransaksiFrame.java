@@ -29,12 +29,15 @@ public class TransaksiFrame extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         namabrg = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jumlah = new javax.swing.JTextField();
+        harga = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         hasil = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jumlah = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
@@ -47,10 +50,10 @@ public class TransaksiFrame extends javax.swing.JFrame {
         jLabel3.setText("Nama Barang");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 80, 80, 50);
-        getContentPane().add(jumlah);
-        jumlah.setBounds(20, 200, 170, 40);
+        getContentPane().add(harga);
+        harga.setBounds(20, 200, 170, 40);
 
-        jLabel4.setText("Jumlah");
+        jLabel4.setText("Harga Barang");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 160, 80, 50);
 
@@ -59,12 +62,13 @@ public class TransaksiFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(80, 0, 330, 60);
 
+        hasil.setEditable(false);
         hasil.setColumns(20);
         hasil.setRows(5);
         jScrollPane2.setViewportView(hasil);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(220, 80, 260, 250);
+        jScrollPane2.setBounds(220, 80, 260, 180);
 
         jButton1.setText("Lihat Stok Barang");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +77,28 @@ public class TransaksiFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(30, 280, 160, 30);
+        jButton1.setBounds(280, 280, 160, 30);
+
+        jButton2.setText("Hitung");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(320, 320, 80, 30);
+
+        jumlah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlahActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jumlah);
+        jumlah.setBounds(20, 290, 170, 40);
+
+        jLabel6.setText("Jumlah");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(20, 250, 80, 50);
 
         jLabel5.setIcon(new javax.swing.ImageIcon("E:\\Senbud\\rose.jpg")); // NOI18N
         jLabel5.setText("jLabel5");
@@ -88,6 +113,29 @@ public class TransaksiFrame extends javax.swing.JFrame {
         new FrameToko().show();
            this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int hargabrg = Integer.parseInt(harga.getText().toString());
+        int jumlahh = Integer.parseInt(jumlah.getText().toString());
+        int total = hargabrg*jumlahh;
+        if (total >= 0){
+      
+            
+            hasil.setText("Total pembayaran Anda :"+total);
+            if (total >= 100000){
+            int diskon = hargabrg*30/100;
+            hasil.setText("Total :"+total+"\n Anda mendapat diskon! \n Hanya perlu membayar :"+(total-diskon));
+            }
+        }else {
+        hasil.setText("Masukan buku yang akan dibeli");
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jumlahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,12 +173,15 @@ public class TransaksiFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField harga;
     private javax.swing.JTextArea hasil;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jumlah;
